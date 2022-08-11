@@ -1,0 +1,5 @@
+body{background-color: skyblue; font-family: Verdana; color: #fff; padding: 30px;text-align: center;}
+h1{font-size: 48px; text-transform: uppercase; letter-spacing: 2px; text-align: centre;}
+p{font-size: 16px; text-align: centre;}
+input{width:500px;margin:50px}
+label{padding:10px}
