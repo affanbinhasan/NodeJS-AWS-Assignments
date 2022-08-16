@@ -46,7 +46,7 @@ router.put('/', (req,res)=>{
 
 router.put('/:item', (req,res)=>{
     Inventory.findOneAndUpdate({name:req.params.item}, req.body)
-    .then(function(){
+    .then(()=>{
         Inventory.findOne({name:req.params.item}).then(function(item){
             res.send(item)
         }) 
