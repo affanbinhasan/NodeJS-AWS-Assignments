@@ -5,12 +5,12 @@ const ShopItem = require('../models/ShopItem');
 
 const app = express();
 const router = express.Router();
-app.use(bodyParser.json())
+router.use(bodyParser.json())
 
 router.get('/', (req, res)=>{
 
     ShopItem.find({}).then((items)=>{
-        if(items){
+        if(items.length !== 0){
             res.send(items);
         }else{
             res.send('No items Avalaible currently. Sorry for Inconvenience');
@@ -72,3 +72,7 @@ router.delete('/:id', (req, res)=>{
 })
 
 module.exports = router;
+
+// available id
+// 62fbeb07e54d2277130a612c
+// 62fbec1ce54d2277130a612f
