@@ -5,9 +5,9 @@ const ShopItem = require('../models/ShopItem');
 
 const app = express();
 const router = express.Router();
-router.use(bodyParser.json())
+app.use(bodyParser.json())
 
-app.get('/', (req, res)=>{
+router.get('/', (req, res)=>{
 
     ShopItem.find({}).then((items)=>{
         if(items){
@@ -20,7 +20,7 @@ app.get('/', (req, res)=>{
     })
 })
 
-app.get('/:id', (req, res)=>{
+router.get('/:id', (req, res)=>{
     ShopItem.findOne({_id:req.params.id})
     .then((item)=>{
         if(item){
@@ -34,7 +34,7 @@ app.get('/:id', (req, res)=>{
     })
 })
 
-app.post('/', (req, res)=>{
+router.post('/', (req, res)=>{
     ShopItem.create(req.body)
     .then((item)=>{
         ShopItem.findOne({name:req.body.name})
@@ -50,7 +50,7 @@ app.post('/', (req, res)=>{
     })
 })
 
-app.put('/:id', (req, res)=>{
+router.put('/:id', (req, res)=>{
     ShopItem.findByIdAndUpdate({_id:req.params.id},req.body)
     .then(()=>{
         ShopItem.findOne({name:req.params.item}).then(function(item){
@@ -61,7 +61,7 @@ app.put('/:id', (req, res)=>{
         res.send(err.message)    })
 })
 
-app.delete('/:id', (req, res)=>{
+router.delete('/:id', (req, res)=>{
     ShopItem.deleteOne({_id:req.params.id})
     .then(()=>{
         res.send("Item sucessfully removed")
@@ -70,3 +70,5 @@ app.delete('/:id', (req, res)=>{
         res.send(err.message)
     })
 })
+
+module.exports = router;
