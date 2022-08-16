@@ -9,13 +9,22 @@ app.set('view engine', 'ejs')
 app.use('/assets' , express.static('assets'))
 
 
-app.get('/form', function(req, res){
-    res.render('form',{ query:req.query })
+app.get('/form', (req, res) => {
+    try {
+        res.render('form',{ query:req.query })
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
-app.post('/form', urlencodedParser, function(req, res){
+app.post('/form', urlencodedParser, (req, res) => {
     console.log(req.body)
-    res.render('form-success',{ obj :req.body })
+    try {
+        res.render('form-success',{ obj :req.body })
+    } catch (error) {
+        console.log(error.message)
+    }
+    
 })
 
 if(port){

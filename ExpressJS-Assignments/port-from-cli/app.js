@@ -11,7 +11,11 @@ dateOfBirth = (agestr) =>{
 }
 
 app.get('/home', function(req, res){
-    res.send('Hello World!')
+    try {
+        res.send('Hello World')
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
 app.listen(port)

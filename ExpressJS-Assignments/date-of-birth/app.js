@@ -9,8 +9,13 @@ dateOfBirth = (agestr) =>{
 
 }
 
-app.get('/:age', function(req, res){
-    res.send('You were born in : ' + dateOfBirth(req.params.age))
+app.get('/:age', (req, res)=>{
+    
+    try {
+        res.send('You were born in : ' + dateOfBirth(req.params.age))
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
 app.listen(4000)

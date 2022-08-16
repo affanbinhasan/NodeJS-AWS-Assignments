@@ -10,9 +10,14 @@ dateOfBirth = (agestr) =>{
 
 }
 
-app.get('/', function(req, res){
-    res.send('Hello World!')
+app.get('/', (req, res) => {
+    try {
+        res.send('Hello World!')
+    } catch (err) {
+        console.log(err.message);
+    }
 })
+
 app.get('/time',function(req, res){
     const date = new Date();
     let ISOdate = date.toISOString()

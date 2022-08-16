@@ -3,8 +3,13 @@ const fs = require('fs');
 
 let app = express()
 
-app.get('/', function(req, res){
-    res.send('Hello World')
+app.get('/', (req, res) => {
+    try {
+        res.send('Hello World')
+    } catch (error) {
+        console.log(error.message)
+    }
+    
 })
 
 app.listen(4000)
